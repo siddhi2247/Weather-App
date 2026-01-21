@@ -1,0 +1,150 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f7f9;
+  color: #333;
+}
+
+/* App container & background animation */
+.app-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 8rem;
+  overflow: hidden;
+}
+
+.bg-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(135deg, #f3f1eb, #fed7aa 60%, #a5b4fc 100%);
+  z-index: -1;
+  animation: pulseBg 6s ease-in-out infinite;
+  filter: blur(8px);
+  opacity: 0.85;
+}
+
+@keyframes pulseBg {
+  0% { transform: scaleY(1); opacity: 0.8; }
+  50% { transform: scaleY(1.2); opacity: 1; }
+  100% { transform: scaleY(1); opacity: 0.8; }
+}
+
+/* Weather card styling with glassmorphism */
+.weather-card {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 2rem;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  width: 360px;
+  text-align: center;
+  z-index: 1;
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+}
+
+.weather-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 16px 40px 0 rgba(80, 80, 180, 0.18);
+}
+
+/* Inputs & buttons inside card */
+.weather-card input {
+  width: 60%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1.5px solid #a5b4fc;
+  border-radius: 6px;
+  outline: none;
+  background: rgba(245,245,255,0.7);
+  transition: border 0.2s;
+  box-shadow: 0 1px 4px rgba(57, 76, 162, 0.08);
+}
+.weather-card input:focus {
+  border: 1.5px solid #6366f1;
+  background: #fff;
+}
+
+.weather-card button {
+  padding: 0.5rem 1.2rem;
+  margin-left: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #6366f1 60%, #818cf8 100%);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 2px 12px 0 rgba(99,102,241,0.18);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.weather-card button:hover {
+  background: linear-gradient(90deg, #4338ca 60%, #6366f1 100%);
+  box-shadow: 0 4px 24px 0 rgba(37, 39, 204, 0.28);
+  transform: scale(1.05);
+}
+
+/* Weather display text */
+.weather-card h2 {
+  margin-top: 1.5rem;
+  font-size: 2rem;
+  color: #4f46e5;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px #a5b4fc33;
+  animation: fadeInDown 0.7s;
+}
+.weather-card p {
+  margin-top: 0.7rem;
+  font-size: 1.2rem;
+  color: #374151;
+  animation: fadeInUp 0.7s;
+}
+
+/* Animations for text */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px);}
+  to   { opacity: 1; transform: translateY(0);}
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px);}
+  to   { opacity: 1; transform: translateY(0);}
+}
+
+/* Loading and error styles */
+.weather-card p[style*="color: red"] {
+  color: #ef4444 !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  animation: shake 0.4s;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0);}
+  20% { transform: translateX(-5px);}
+  40% { transform: translateX(5px);}
+  60% { transform: translateX(-5px);}
+  80% { transform: translateX(5px);}
+  100% { transform: translateX(0);}
+}
+/* Footer styling */
+#footer {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #070707;
+  
+}
